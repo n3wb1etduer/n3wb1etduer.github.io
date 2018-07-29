@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        stef&#39;s blog
+        hexo博客换电脑后的配置 · stef&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -57,6 +57,8 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
@@ -64,27 +66,58 @@
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
     
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >stef&#39;s blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">hexo博客换电脑后的配置</a>
+            </div>
+    </div>
+    
     <a class="home-link" href=/>stef's blog</a>
 </header>
     <div class="wrapper">
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(http://owsj56qpp.bkt.clouddn.com/MacawFlight_EN-US9275204017_1920x1080.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            hexo博客换电脑后的配置
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = hexo>hexo</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/07/29</span>
+            </div>
         
     </div>
 </div>
@@ -152,243 +185,78 @@
             }
         </script>
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/05/11/iptables/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>云服务器的防火墙配置</span>
-                    </h2>
-                <div class="abstract-content">
-                    一些关于iptables的东西&emsp;&emsp;前几天在服务器装gitlab结果把防火墙弄乱了，Xshell和ss都连不上了，瞎捣鼓了几天也没弄好，最后直接搬新机房重装系统了，下面记录一下学到的东西吧。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="换新电脑后hexo博客该如何搬迁？"><a href="#换新电脑后hexo博客该如何搬迁？" class="headerlink" title="换新电脑后hexo博客该如何搬迁？"></a>换新电脑后hexo博客该如何搬迁？</h1><p>&emsp;&emsp;前几天弄了一台mac玩玩，不得不说mac是真的好用，那么问题来了，我以前的东西咋办呢？那首先把博客搬过来吧。（此为笨方法，大佬们勿喷 = =）</p>
+<ul>
+<li>首先我按照在新电脑搭建新博客的步骤进行</li>
+</ul>
+<p>安装git和nodejs就不说啦，打开终端，cd到你的博客目录，输入以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></p>
+<p>之后我们可以输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo v</span><br></pre></td></tr></table></figure></p>
+<p>来查看版本信息。</p>
+<ul>
+<li>测试一下hexo是否正常</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>应输出以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+<p>打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 来检查一下是否正常，在这里如果4000端口被占用了，可以换一个端口，具体命令如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p port  # port为你想要修改的端口号</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>拷贝源文件</li>
+</ul>
+<p>只需拷贝以下文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_config.yml</span><br><span class="line"> package.json</span><br><span class="line"> scaffolds/</span><br><span class="line"> source/</span><br><span class="line"> themes/</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>安装相应的模块</li>
+</ul>
+<p>当然要cd到blog目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save  // 文章部署到 git 的模块</span><br><span class="line">（下面为选择安装）</span><br><span class="line">npm install hexo-generator-feed --save  // 建立 RSS 订阅</span><br><span class="line">npm install hexo-generator-sitemap --save // 建立站点地图</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>然后同第二步测试一下是否正常</li>
+</ul>
+<p>若正常到这就结束啦，在d的时候重新输入github用户名和密码即可。</p>
+<ul>
+<li>附</li>
+</ul>
+<p>在打开tag时出错，提示如下图<br><img src="http://owsj56qpp.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-29%20%E4%B8%8B%E5%8D%8811.15.06.png" alt=""><br>根据图上的指令进行安装即可。<br>&emsp;&emsp;谢谢阅读！  ：）</p>
 
-首先是一些基本的命令
-1234567$ /etc/init.d/iptables start     # 开启防火墙，或者service iptables start，以下同理$ /etc/init.d/iptables stop      # 停止防火墙$ /etc/init.d/iptables restart   # 重启防火墙$ /etc/init.d/iptables ...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/05/11</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/04/06/hash/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>0e开头的md5</span>
-                    </h2>
-                <div class="abstract-content">
-                    总结&emsp;&emsp;百度找到的。。。侵删。。。
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172s878926199a0e545993274517709034328855841020s155964671a0e342768416822451524974117254469s214587387a0e848240448830537924465865611904s2145...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/06</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/04/02/tianxiawugong/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>实验吧ctf天下武功唯快不破</span>
-                    </h2>
-                <div class="abstract-content">
-                    天下武功唯快不破&emsp;&emsp;解题方法如题，怎么做到快呢？写代码啊！
-天下武功唯快不破 分值：10来源： 北邮天枢战队看看响应头
-格式：CTF{ }
-解题链接： http://ctf5.shiyanbar.com/web/10/10.php
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2018/07/20/mac/" title= Hello World >
+                    <span>Previous Post</span>
+                    <span>Hello World</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
 
-通过base64解码响应头中的flag然后快速提交得到flag，代码如下。12345678910import base64import requests as rurl = &apos;http://ctf5.shiyanbar.com/web/10/10.php&apos;header = r.get(url)flag = base64...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/02</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/04/01/kali change passwd/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>kali忘记密码后更改密码</span>
-                    </h2>
-                <div class="abstract-content">
-                    kali忘记密码后更改密码&emsp;&emsp;愚人节快乐！刚刚用密码怎么也上不去root账户了，所以刚刚学会这个方法，感觉挺简单的。
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTQ0Ni84MDEw>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
 
-&emsp;&emsp;启动系统出现引导界面时选择回复模式。
-&emsp;&emsp;按e进入编辑模式。
-&emsp;&emsp;找到一行代码，以linux开头，结尾为initrd.gz结尾的代码，如1linux       /boot/vmlinuz-*.*.*-kali- ············  /gtk/initrd\.gz
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
 
 
-代码一般在最下面，注意不要找错，试了三遍才发现找错了代码。= =
-
-&emsp;&emsp;将代码中的ro改为r...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/04/01</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/03/01/03.01/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>一道隐写术的题目</span>
-                    </h2>
-                <div class="abstract-content">
-                    一道隐写术的题目&emsp;&emsp;哈哈哈隐写术挺好玩的，但是有时还是做起来没有方向，还是太菜了啊！！
-题目：欢迎来到地狱原题链接: http://www.shiyanbar.com/ctf/2010连环套哦。格式CTF{xxxx}。解题链接： http://ctf5.shiyanbar.com/stega/hell/欢迎来到地狱.zip
-
-解压压缩包，发现有一个图片和一个文档，打开文档发现有密码，那就打开图片看看有什么线索，结果图片打不开。
-
-用winhex打开图片，发现文件头有点问题，把jpg文件的文件头补全，jpg文件的前8字节的十六进制是FF&emsp;D8&emsp;FF&...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/03/01</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/02/23/02.23/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CTF之salmap初使用</span>
-                    </h2>
-                <div class="abstract-content">
-                    CTF之sqlmap初使用&emsp;&emsp;最近淘了一台IBM T43，价格很美丽，就弄回来装kali玩啦，但是不知道为什么USB插U盘可以正常使用，但是鼠标却用不了。实用了一下kali里面的sqlmap，我的win10装的sqlmap本来用的正常的，后来出了毛病，输入指令回车后啥都没有。。有人解答一下吗？
-题目：这个看起来有点简单原题链接: 这个看起来有点简单很明显。过年过节不送礼，送礼就送这个格式：解题链接： http://ctf5.shiyanbar.com/8/index.php?id=1 
-
-查看数据库名
-
-查看表名
-
-查看列名
-
-把数据dump出来得到flag
-
-
-&e...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/23</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/12/06/tags- CTF/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CTF之burp初使用</span>
-                    </h2>
-                <div class="abstract-content">
-                    CTF之burp初使用&emsp;&emsp;最近粗略的试用了一下burp，不得不说这是一个好的工具，虽然我只用到了全部功能中的一点点。。。（逃，下面我就简单地记录一下实验吧中的两道web题吧。
-题目：头有点大原题链接: 头有点大提示都这么多了，再提示就没意思了。解题链接： http://ctf5.shiyanbar.com/sHeader/ 
-
-首先打开链接，得到内容如下图得到信息访问网站需要安装.net framework 9.9 并且要在英国用ie浏览器访问，啥？要知道 .net framework 现在最高版本好像才是4.7哦，更不要说去英国了（虽然我感觉用vpn可以行得通，要是...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/12/06</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
     
 </main>
             <!-- profile -->
@@ -483,6 +351,13 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#换新电脑后hexo博客该如何搬迁？"><span class="toc-number">1.</span> <span class="toc-text">换新电脑后hexo博客该如何搬迁？</span></a></li></ol>
+    </div>
     
     <div class="back-top">&#xe639;</div>
     <div class="sidebar">
