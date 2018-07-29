@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        kali忘记密码后更改密码 · stef&#39;s blog
+        云服务器的防火墙配置 · stef&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -71,7 +71,7 @@
                 <a href="/" >stef&#39;s blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">kali忘记密码后更改密码</a>
+                <a href="#" class="post-name">云服务器的防火墙配置</a>
             </div>
     </div>
     
@@ -92,7 +92,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            kali忘记密码后更改密码
+            云服务器的防火墙配置
             <!-- 404 -->
             
         </h1>
@@ -116,7 +116,7 @@
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/04/01</span>
+                <span class="post-intro-time">2018/05/11</span>
             </div>
         
     </div>
@@ -187,22 +187,31 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="kali忘记密码后更改密码"><a href="#kali忘记密码后更改密码" class="headerlink" title="kali忘记密码后更改密码"></a>kali忘记密码后更改密码</h1><p>&emsp;&emsp;愚人节快乐！刚刚用密码怎么也上不去root账户了，所以刚刚学会这个方法，感觉挺简单的。</p>
+        <h1 id="一些关于iptables的东西"><a href="#一些关于iptables的东西" class="headerlink" title="一些关于iptables的东西"></a>一些关于iptables的东西</h1><p>&emsp;&emsp;前几天在服务器装gitlab结果把防火墙弄乱了，Xshell和ss都连不上了，瞎捣鼓了几天也没弄好，最后直接搬新机房重装系统了，下面记录一下学到的东西吧。</p>
 <ul>
-<li>&emsp;&emsp;启动系统出现引导界面时选择回复模式。</li>
-<li>&emsp;&emsp;按e进入编辑模式。</li>
-<li>&emsp;&emsp;找到一行代码，以linux开头，结尾为initrd.gz结尾的代码，如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux       /boot/vmlinuz-*.*.*-kali- ············  /gtk/initrd\.gz</span><br></pre></td></tr></table></figure>
+<li><p>首先是一些基本的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ /etc/init.d/iptables start     # 开启防火墙，或者service iptables start，以下同理</span><br><span class="line">$ /etc/init.d/iptables stop      # 停止防火墙</span><br><span class="line">$ /etc/init.d/iptables restart   # 重启防火墙</span><br><span class="line">$ /etc/init.d/iptables status    # 查看端口状态</span><br><span class="line">$ /etc/init.d/iptables save      # 保存配置</span><br><span class="line">$ chkconfig iptables off         # 永久关闭防火墙</span><br><span class="line">$ chkconfig iptables on          # 永久关闭后启用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>端口的打开<br>以3333为例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /sbin/iptables -I INPUT -p tcp --dport 3333 -j ACCEPT #打开端口</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>代码一般在最下面，注意不要找错，试了三遍才发现找错了代码。= =</p>
+<p>另一种方法是打开配置文件<code>/etc/sysconfig/iptables</code>，加入如下语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-I INPUT -p tcp -m state --state NEW -m tcp --dport 3333 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>这一种方法我没有用过，大家自行判断吧。</p>
 <ul>
-<li><p>&emsp;&emsp;将代码中的ro改为rw,并在最后也就是.gz后添加代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init=/bin/bash</span><br></pre></td></tr></table></figure>
+<li>端口的关闭<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -I INPUT -p tcp --dport 3333 -j DROP</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>&emsp;&emsp;按f10或者Ctrl+X继续启动恢复模式。</p>
+</ul>
+<p>关闭IP访问：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -A INPUT -p tcp -s 192.168.1.1 -j DROP</span><br></pre></td></tr></table></figure></p>
+<p>或者，打开配置文件<code>/etc/sysconfig/iptables</code>，加入如下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 3333 -j DROP</span><br></pre></td></tr></table></figure></p>
+<p>然后保存、重启。</p>
+<ul>
+<li>规则的删除<br>首先查看端口的状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /etc/init.d/iptables status    # 查看端口状态</span><br></pre></td></tr></table></figure>
 </li>
-<li>&emsp;&emsp;进入命令界面，然后输入命令passwd就可以修改密码啦。</li>
-<li>&emsp;&emsp;重启系统，输入密码，成功！<br>时间有点紧，图片以后再补上吧，siesie阅读！</li>
+</ul>
+<p>然后根据编号删除，例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -D INPUT 1 #删除INPUT中的第1条规则</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>其他<br><code>dport</code>和<code>sport</code>分别是目标端口和来源端口的意思，要结合<code>OUTPUT</code>和<code>INPUT</code>来分析，还有<code>FORWARD</code>。还有<code>DROP</code>、<code>ACCEPT</code>、<code>FORWARD</code>。<br>在打开端口的命令里的 -I 在一些博客中也有用 -A 的，简言之，I是新建一条规则，而A是补加一条规则，也就是I命令在最上面，A命令在最下面，再详细点我也不好讲，大家自行学习吧。<br>最后配一张ss和Xshell正常连接的配置图吧<br><img src="http://owsj56qpp.bkt.clouddn.com/iptables.png" alt=""><br>&emsp;&emsp;谢谢阅读！  ：）</li>
 </ul>
 
     </article>
@@ -210,17 +219,17 @@
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/2018/04/02/tianxiawugong/" title= 实验吧ctf天下武功唯快不破 >
+                <a href= "/2018/05/11/iptables/" title= 云服务器的防火墙配置 >
                     <span>Next Post</span>
-                    <span>实验吧ctf天下武功唯快不破</span>
+                    <span>云服务器的防火墙配置</span>
                 </a>
             </li>
         
         
             <li class="previous">
-                <a href= "/2018/03/20/py-3.20/" title= python初学之正则表达式 >
+                <a href= "/2018/04/06/hash/" title= 0e开头的md5 >
                     <span>Previous Post</span>
-                    <span>python初学之正则表达式</span>
+                    <span>0e开头的md5</span>
                 </a>
             </li>
         
@@ -350,7 +359,7 @@
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kali忘记密码后更改密码"><span class="toc-number">1.</span> <span class="toc-text">kali忘记密码后更改密码</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一些关于iptables的东西"><span class="toc-number">1.</span> <span class="toc-text">一些关于iptables的东西</span></a></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
