@@ -157,14 +157,19 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2018/01/26/1.26/" >
+            <a class="content-show-full" href = "/2018/09/09/rsa/" >
                     <h2 class="abstract-title">
                         
-                        <span>很久没更新</span>
+                        <span>rsa入门</span>
                     </h2>
                 <div class="abstract-content">
-                    很久没更新&emsp;&emsp;临近期末很久没更新了，最近几天准备更新一下~~
+                    rsa入门&emsp;&emsp;rsa算法是一种经典的非对称加密算法，我们废话不多说，我直接拿wiki上的解释过来吧，侵权联系本人马上删除
 
+rsa算法的原理
+
+公钥与私钥的产生
+
+假设Alice想要通过一个不可靠的媒体接收Bob的一条私人消息。她可以用以下的方式来产生一个公钥和一个私钥：1.随意选择两个大的质数p和q，p不等于q，计算N=pq。2.根据欧拉函数，求得r=phi(N)=phi(p)phi(q)=(p-1)(q-1)3.选择一个小于r的整数e，使e与r互质。并求得e关于r的模反元素，命名为d（求d令ed模r等于1模r）。（模反元素存在，当且仅当e与r互质）4.将p和q的记...
                 </div>
             </a>
             <div class="abstract-post-meta">
@@ -172,237 +177,18 @@
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = 密码学>密码学</a>
     
 </div>
                 
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/01/26</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/12/06/tags- CTF/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CTF之burp初使用</span>
-                    </h2>
-                <div class="abstract-content">
-                    CTF之burp初使用&emsp;&emsp;最近粗略的试用了一下burp，不得不说这是一个好的工具，虽然我只用到了全部功能中的一点点。。。（逃，下面我就简单地记录一下实验吧中的两道web题吧。
-题目：头有点大原题链接: 头有点大提示都这么多了，再提示就没意思了。解题链接： http://ctf5.shiyanbar.com/sHeader/ 
-
-首先打开链接，得到内容如下图得到信息访问网站需要安装.net framework 9.9 并且要在英国用ie浏览器访问，啥？要知道 .net framework 现在最高版本好像才是4.7哦，更不要说去英国了（虽然我感觉用vpn可以行得通，要是...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/12/06</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/25/tags- 日记11.25/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>这是一篇关于维权的思考</span>
-                    </h2>
-                <div class="abstract-content">
-                    一篇关于维权的思考&emsp;&emsp;记录一件最近几天一直思考的一件事情吧。&emsp;&emsp;周四晚上去某餐厅吃饭，在吃菜的时候无意瞥见了类似虫子的物体，仔细观察觉得越来越像虫子（参考那种很小的只会蠕动的白色的幼虫或者是蛆虫，就不上图了）。首先我打开了录像先是把虫子录了下来然后录一遍四周证明是这一家餐厅，然后叫过服务员来，服务员还没看完就说这不是虫子，然后我面带微笑说：呵呵，那你说这是什么？然后服务员就去叫她的上层，好像是经理助理，当然也是不承认，然后慢慢的换一盘菜，又换一个锅到了打折最后免单，当然是我又是举出从某乎网站学到的食品安全法第三十九条第一百四十八条和录像证据等等才使...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/25</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/28/tags- c-c++/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>c语言地址和指针的一些小知识</span>
-                    </h2>
-                <div class="abstract-content">
-                    c语言地址和指针的一些小知识子程序中&amp;和*的使用&emsp;&emsp;最近在做数据结构作业时，有了一个疑惑。在子程序中想要用实参的话，括号里的参数前要用&amp;（并不是取地址符号，后面会提到），例如12345status Delete (Linklist &amp;L)&#123;    ...    ...&#125;
-这样就可以在子函数Delete中进行修改L的操作了。但如果是对内存进行修改，那为什么不能用指针呢？？于是写了一个小程序试验一下1234567891011121314#include&lt;stdio.h&gt;void test(int *p)&#123;	...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = c/c++>c/c++</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/28</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/24/10.24杂想/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>10.24杂想</span>
-                    </h2>
-                <div class="abstract-content">
-                    10.24杂想&emsp;&emsp;今晚本想写一些东西的，但是想到的很混乱，还是整理一下思绪在写吧。
-最近对一句诗特有感触：
-朱门酒肉臭，路有冻死骨。
-
-此刻已经是新的一天了，大家晚安。
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/24</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/23/正式的第一篇文章/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>正式的第一篇文章</span>
-                    </h2>
-                <div class="abstract-content">
-                    正式的第一篇文章
-
-&emsp;&emsp;哈喽大家好呀！经过我这只菜鸟的慢慢努力，我的博客终于可以运行起来啦，这个博客是用hexo搭建在github上的，首先要谢谢rookiehacker学长还有现在这个主题的作者fi3ework还有还有其他的分享自己经验的人们，对了他们两个的连接我已经挂在friends上啦！那么来介绍一下我自己吧：信息安全专业小白一枚，建立博客的初衷是为了督促自己学习，而现在我已经打算在学习的同时还要写一些日记、分享一些图片或者影评啥的，嗯我希望在这个复杂庞大的互联网世界里拥有自己的一块小空间，对了我是许巍和孙燕姿粉丝。
-
-&emsp;&emsp;过几天我会整理一下...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/23</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/23/第一篇文章/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>第一篇文章</span>
-                    </h2>
-                <div class="abstract-content">
-                    第一篇文章来啦
-test1
-test2
-test3photo test
-
-
-引用
-
-
-123printf(&quot;hello,world&quot;);test;return;
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = hexo>hexo</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/23</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/09/20/hello-world/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>Hello World</span>
-                    </h2>
-                <div class="abstract-content">
-                    Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
-More info: Writing
-Run server1$ hexo server
-More...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/09/20</span>
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/09/09</span>
                 </div>
             </div>
         </article>
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/">#PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
     
 </main>
             <!-- profile -->

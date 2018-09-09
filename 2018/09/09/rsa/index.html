@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        stef&#39;s blog
+        rsa入门 · stef&#39;s blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -57,6 +57,8 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
@@ -64,27 +66,58 @@
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
     
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >stef&#39;s blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">rsa入门</a>
+            </div>
+    </div>
+    
     <a class="home-link" href=/>stef's blog</a>
 </header>
     <div class="wrapper">
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(http://owsj56qpp.bkt.clouddn.com/MacawFlight_EN-US9275204017_1920x1080.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            rsa入门
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = 密码学>密码学</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/09/09</span>
+            </div>
         
     </div>
 </div>
@@ -152,257 +185,65 @@
             }
         </script>
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/01/26/1.26/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>很久没更新</span>
-                    </h2>
-                <div class="abstract-content">
-                    很久没更新&emsp;&emsp;临近期末很久没更新了，最近几天准备更新一下~~
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="rsa入门"><a href="#rsa入门" class="headerlink" title="rsa入门"></a>rsa入门</h1><p>&emsp;&emsp;rsa算法是一种经典的非对称加密算法，我们废话不多说，我直接拿wiki上的解释过来吧，侵权联系本人马上删除</p>
+<ul>
+<li><p>rsa算法的原理</p>
+<blockquote>
+<p>公钥与私钥的产生</p>
+<blockquote>
+<p>假设Alice想要通过一个不可靠的媒体接收Bob的一条私人消息。她可以用以下的方式来产生一个公钥和一个私钥：<br>1.随意选择两个大的质数p和q，p不等于q，计算N=pq。<br>2.根据欧拉函数，求得r=phi(N)=phi(p)phi(q)=(p-1)(q-1)<br>3.选择一个小于r的整数e，使e与r互质。并求得e关于r的模反元素，命名为d（求d令ed模r等于1模r）。（模反元素存在，当且仅当e与r互质）<br>4.将p和q的记录销毁。(N,e)是公钥，(N,d)是私钥。Alice将她的公钥(N,e)传给Bob，而将她的私钥(N,d)藏起来。<br>(N,e)是公钥，(N,d)是私钥。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>如何解rsa呢？<br>我们需要用到扩展欧几里得算法。对于不完全为0的非负整数a，b，gcd(a，b)表示a，b的最大公约数，必然存在整数对x，y。使得gcd(a,b)=ax+by。<br>如何求解 （以下讨论a&gt;b）<br>显然当 b=0，gcd（a，b）=a。此时 x=1，y=0；<br>当a&gt;b&gt;0 时<br>设 ax1+ by1= gcd（a，b）；<br>bx2+ （a mod b）y2= gcd（b，a mod b）；<br>根据欧几里德原理有 gcd（a，b） = gcd（b，a mod b）；<br>则：ax1+ by1= bx2+ （a mod b）y2；<br>即：ax1+ by1= bx2+ （a - [a / b] <em> b）y2 = ay2+ bx2- [a / b] </em> by2；（a mod b = a - [a / b]<em>b；[a / b]代表a整除b）<br>也就是ax1+ by1 = ay2 + b（x2- [a / b] </em>y2）；<br>根据恒等定理得：x1=y2；y1=x2- [a / b] *y2；<br>这样我们就得到了求解 x1，y1 的方法：x1，y1 的值基于 x2，y2<br>由引理我们知道：ax+by = z，z为gcd（a，b）若干倍，所以我们先求解ax+by = gcd（a，b），再将求出的解乘以 z/gcd（a，b）就好了。</p>
+</li>
+<li><p>下面来看一个题目<br>在一次RSA密钥对生成中，假设p=473398607161，q=4511491，e=17，求解出d<br>下面贴出py算法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def ext_euclid(a,b):</span><br><span class="line">    if b == 0:</span><br><span class="line">        return (a, 1, 0)</span><br><span class="line">    d, x, y = ext_euclid(b, a%b)</span><br><span class="line">    return (d, y, x-a//b*y)</span><br><span class="line">            # 返回三元组</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    print(ext_euclid(17, 2135733082216268400))</span><br></pre></td></tr></table></figure>
+<p>  最后得到d = 125631357777427553</p>
+</li>
+</ul>
 
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/01/26</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/12/06/tags- CTF/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CTF之burp初使用</span>
-                    </h2>
-                <div class="abstract-content">
-                    CTF之burp初使用&emsp;&emsp;最近粗略的试用了一下burp，不得不说这是一个好的工具，虽然我只用到了全部功能中的一点点。。。（逃，下面我就简单地记录一下实验吧中的两道web题吧。
-题目：头有点大原题链接: 头有点大提示都这么多了，再提示就没意思了。解题链接： http://ctf5.shiyanbar.com/sHeader/ 
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2018/07/29/newcomputer/" title= hexo博客换电脑后的配置 >
+                    <span>Previous Post</span>
+                    <span>hexo博客换电脑后的配置</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
 
-首先打开链接，得到内容如下图得到信息访问网站需要安装.net framework 9.9 并且要在英国用ie浏览器访问，啥？要知道 .net framework 现在最高版本好像才是4.7哦，更不要说去英国了（虽然我感觉用vpn可以行得通，要是...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/12/06</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/25/tags- 日记11.25/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>这是一篇关于维权的思考</span>
-                    </h2>
-                <div class="abstract-content">
-                    一篇关于维权的思考&emsp;&emsp;记录一件最近几天一直思考的一件事情吧。&emsp;&emsp;周四晚上去某餐厅吃饭，在吃菜的时候无意瞥见了类似虫子的物体，仔细观察觉得越来越像虫子（参考那种很小的只会蠕动的白色的幼虫或者是蛆虫，就不上图了）。首先我打开了录像先是把虫子录了下来然后录一遍四周证明是这一家餐厅，然后叫过服务员来，服务员还没看完就说这不是虫子，然后我面带微笑说：呵呵，那你说这是什么？然后服务员就去叫她的上层，好像是经理助理，当然也是不承认，然后慢慢的换一盘菜，又换一个锅到了打折最后免单，当然是我又是举出从某乎网站学到的食品安全法第三十九条第一百四十八条和录像证据等等才使...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/25</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/28/tags- c-c++/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>c语言地址和指针的一些小知识</span>
-                    </h2>
-                <div class="abstract-content">
-                    c语言地址和指针的一些小知识子程序中&amp;和*的使用&emsp;&emsp;最近在做数据结构作业时，有了一个疑惑。在子程序中想要用实参的话，括号里的参数前要用&amp;（并不是取地址符号，后面会提到），例如12345status Delete (Linklist &amp;L)&#123;    ...    ...&#125;
-这样就可以在子函数Delete中进行修改L的操作了。但如果是对内存进行修改，那为什么不能用指针呢？？于是写了一个小程序试验一下1234567891011121314#include&lt;stdio.h&gt;void test(int *p)&#123;	...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = c/c++>c/c++</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/28</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/24/10.24杂想/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>10.24杂想</span>
-                    </h2>
-                <div class="abstract-content">
-                    10.24杂想&emsp;&emsp;今晚本想写一些东西的，但是想到的很混乱，还是整理一下思绪在写吧。
-最近对一句诗特有感触：
-朱门酒肉臭，路有冻死骨。
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTQ0Ni84MDEw>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
 
-此刻已经是新的一天了，大家晚安。
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/24</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/23/正式的第一篇文章/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>正式的第一篇文章</span>
-                    </h2>
-                <div class="abstract-content">
-                    正式的第一篇文章
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
 
-&emsp;&emsp;哈喽大家好呀！经过我这只菜鸟的慢慢努力，我的博客终于可以运行起来啦，这个博客是用hexo搭建在github上的，首先要谢谢rookiehacker学长还有现在这个主题的作者fi3ework还有还有其他的分享自己经验的人们，对了他们两个的连接我已经挂在friends上啦！那么来介绍一下我自己吧：信息安全专业小白一枚，建立博客的初衷是为了督促自己学习，而现在我已经打算在学习的同时还要写一些日记、分享一些图片或者影评啥的，嗯我希望在这个复杂庞大的互联网世界里拥有自己的一块小空间，对了我是许巍和孙燕姿粉丝。
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
 
-&emsp;&emsp;过几天我会整理一下...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/23</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/23/第一篇文章/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>第一篇文章</span>
-                    </h2>
-                <div class="abstract-content">
-                    第一篇文章来啦
-test1
-test2
-test3photo test
+    <!--PC版-->
 
 
-引用
-
-
-123printf(&quot;hello,world&quot;);test;return;
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = hexo>hexo</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/23</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/09/20/hello-world/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>Hello World</span>
-                    </h2>
-                <div class="abstract-content">
-                    Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
-More info: Writing
-Run server1$ hexo server
-More...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/09/20</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/">#PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
     
 </main>
             <!-- profile -->
@@ -497,6 +338,13 @@ More...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rsa入门"><span class="toc-number">1.</span> <span class="toc-text">rsa入门</span></a></li></ol>
+    </div>
     
     <div class="back-top">&#xe639;</div>
     <div class="sidebar">
