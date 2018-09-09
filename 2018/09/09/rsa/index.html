@@ -201,9 +201,13 @@
 </li>
 <li><p>下面来看一个题目<br>在一次RSA密钥对生成中，假设p=473398607161，q=4511491，e=17，求解出d<br>下面贴出py算法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def ext_euclid(a,b):</span><br><span class="line">    if b == 0:</span><br><span class="line">        return (a, 1, 0)</span><br><span class="line">    d, x, y = ext_euclid(b, a%b)</span><br><span class="line">    return (d, y, x-a//b*y)</span><br><span class="line">            # 返回三元组</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    print(ext_euclid(17, 2135733082216268400))</span><br></pre></td></tr></table></figure>
-<p>  最后得到d = 125631357777427553</p>
+<p>  最后得到d = 125631357777427553<br>谢谢阅读！</p>
 </li>
 </ul>
+<p>参考链接：</p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95</a><br><a href="https://blog.csdn.net/leader_one/article/details/75222771" target="_blank" rel="noopener">https://blog.csdn.net/leader_one/article/details/75222771</a></p>
+</blockquote>
 
     </article>
     <!-- 前后页  -->
@@ -577,6 +581,14 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-archive"> Total : 18 </div>
     
     <div class="post-archive">
@@ -695,9 +707,9 @@
     
         <span class="sidebar-tag-name"><a href= "#">日记</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">密码学</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">hexo</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">密码学</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">c/c++</a></span>
     
