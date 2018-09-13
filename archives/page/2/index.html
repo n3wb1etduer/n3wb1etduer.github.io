@@ -1,44 +1,70 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>
-        
-        stef&#39;s blog
-        
-    </title>
-    <link rel="icon" href= /assests/favicon.ico>
-    <!-- TODO: 在font-face加载完毕后改变字体  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
-    <!-- 提前加载place holder  -->
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="n3wb1e">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="n3wb1e">
+    
+    <meta name="keywords" content=",,">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>n3wb1e&#39;s blog</title>
     <style type="text/css">
-        @font-face {
-            font-family: 'Oswald-Regular';
-            src: url(/font/Oswald-Regular.ttf);
-        }
-    </style>
-    <style type="text/css">
-        .site-intro {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-            overflow: hidden;
-            box-shadow: -0.1rem 0 0.5rem 0 rgba(0, 0, 0, 0.8);
-        }
-        .site-intro-placeholder {
-            position: absolute;
-            z-index: -2;
-            top: 0;
-            left: 0px;
-            width: calc(100% + 300px);
-            height: 100%;
-            background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-            background-position: center center;
-            transform: translate3d(-226px, 0, 0);
-            animation: gradient-move 2.5s ease-out 0s 1;
-        }
-        @keyframes gradient-move {
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
         0% {
             transform: translate3d(-226px, 0, 0);
         }
@@ -46,16 +72,136 @@
             transform: translate3d(0, 0, 0);
         }
     }
+
 </style>
-    <link rel="stylesheet" href = /css/style.css?v=20171218 />
-    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
-    <script src="/scripts/main.js" defer></script>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
     <!-- 谷歌统计  -->
     
 </head>
+
     
     
 <header class="header">
@@ -64,15 +210,22 @@
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
     
-    <a class="home-link" href=/>stef's blog</a>
+    <a class="home-link" href=/>n3wb1e's blog</a>
 </header>
     <div class="wrapper">
-        <div class="site-intro">
+        <div class="site-intro" style="
+
+
+
+
+
+
+">
     
     <!-- 主页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
@@ -88,115 +241,151 @@
         
     </div>
 </div>
-        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <script>
-            var browser = {
-                    versions: function () {
-                        var u = window.navigator.userAgent;
-                        return {
-                            userAgent: u,
-                            trident: u.indexOf('Trident') > -1, //IE内核
-                            presto: u.indexOf('Presto') > -1, //opera内核
-                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-                            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-                            iPad: u.indexOf('iPad') > -1, //是否为iPad
-                            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-                            weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-                            uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
-                        };
-                    }()
-                }
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
 
-            function fontLoaded(){
-                console.log('font loaded');
-                if (document.getElementsByClassName('site-intro-meta')) {
-                    document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
-                    document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-                    var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
-                        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
-                        if (postIntroTags) {
-                            postIntroTags.classList.add('post-fade-in');
-                        }
-                        if (postIntroMeat) {
-                            postIntroMeat.classList.add('post-fade-in');
-                        }
-                    }
-                }
-                
-            console.log("userAgent:" + browser.versions.userAgent);
-            // UC不支持跨域，所以直接显示
-            if (browser.versions.uc) {
-                console.log("UCBrowser");
-                fontLoaded();
-            } else {
-                WebFont.load({
-                    custom: {
-                        families: ['Oswald-Regular']
-                    },
-                    loading: function () {  //所有字体开始加载
-                        // console.log('loading');
-                    },
-                    active: function () {  //所有字体已渲染
-                        fontLoaded();
-                    },
-                    inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
-                        console.log('inactive: timeout');
-                        fontLoaded();
-                    },
-                    timeout: 7000 // Set the timeout to two seconds
-                });
-            }
-        </script>
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
             <main class="main index-page">
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/03/01/03.01/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>一道隐写术的题目</span>
-                    </h2>
-                <div class="abstract-content">
-                    一道隐写术的题目&emsp;&emsp;哈哈哈隐写术挺好玩的，但是有时还是做起来没有方向，还是太菜了啊！！
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/03/01/03.01/" >
+            
+                <span>一道隐写术的题目</span>
+        </a>
+        <div class="abstract-content">
+            一道隐写术的题目&emsp;&emsp;哈哈哈隐写术挺好玩的，但是有时还是做起来没有方向，还是太菜了啊！！
 题目：欢迎来到地狱原题链接: http://www.shiyanbar.com/ctf/2010连环套哦。格式CTF{xxxx}。解题链接： http://ctf5.shiyanbar.com/stega/hell/欢迎来到地狱.zip
 
 解压压缩包，发现有一个图片和一个文档，打开文档发现有密码，那就打开图片看看有什么线索，结果图片打不开。
 
 用winhex打开图片，发现文件头有点问题，把jpg文件的文件头补全，jpg文件的前8字节的十六进制是FF&emsp;D8&emsp;FF&...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/03/01</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/02/23/02.23/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CTF之salmap初使用</span>
-                    </h2>
-                <div class="abstract-content">
-                    CTF之sqlmap初使用&emsp;&emsp;最近淘了一台IBM T43，价格很美丽，就弄回来装kali玩啦，但是不知道为什么USB插U盘可以正常使用，但是鼠标却用不了。实用了一下kali里面的sqlmap，我的win10装的sqlmap本来用的正常的，后来出了毛病，输入指令回车后啥都没有。。有人解答一下吗？
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/02/23/02.23/" >
+            
+                <span>CTF之salmap初使用</span>
+        </a>
+        <div class="abstract-content">
+            CTF之sqlmap初使用&emsp;&emsp;最近淘了一台IBM T43，价格很美丽，就弄回来装kali玩啦，但是不知道为什么USB插U盘可以正常使用，但是鼠标却用不了。实用了一下kali里面的sqlmap，我的win10装的sqlmap本来用的正常的，后来出了毛病，输入指令回车后啥都没有。。有人解答一下吗？
 题目：这个看起来有点简单原题链接: 这个看起来有点简单很明显。过年过节不送礼，送礼就送这个格式：解题链接： http://ctf5.shiyanbar.com/8/index.php?id=1 
 
 查看数据库名
@@ -209,215 +398,222 @@
 
 
 &e...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/02/23</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2018/01/26/1.26/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>很久没更新</span>
-                    </h2>
-                <div class="abstract-content">
-                    很久没更新&emsp;&emsp;临近期末很久没更新了，最近几天准备更新一下~~
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/01/26/1.26/" >
+            
+                <span>很久没更新</span>
+        </a>
+        <div class="abstract-content">
+            很久没更新&emsp;&emsp;临近期末很久没更新了，最近几天准备更新一下~~
 
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "日记">日记</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2018/01/26</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/12/06/tags- CTF/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>CTF之burp初使用</span>
-                    </h2>
-                <div class="abstract-content">
-                    CTF之burp初使用&emsp;&emsp;最近粗略的试用了一下burp，不得不说这是一个好的工具，虽然我只用到了全部功能中的一点点。。。（逃，下面我就简单地记录一下实验吧中的两道web题吧。
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/12/06/tags- CTF/" >
+            
+                <span>CTF之burp初使用</span>
+        </a>
+        <div class="abstract-content">
+            CTF之burp初使用&emsp;&emsp;最近粗略的试用了一下burp，不得不说这是一个好的工具，虽然我只用到了全部功能中的一点点。。。（逃，下面我就简单地记录一下实验吧中的两道web题吧。
 题目：头有点大原题链接: 头有点大提示都这么多了，再提示就没意思了。解题链接： http://ctf5.shiyanbar.com/sHeader/ 
 
 首先打开链接，得到内容如下图得到信息访问网站需要安装.net framework 9.9 并且要在英国用ie浏览器访问，啥？要知道 .net framework 现在最高版本好像才是4.7哦，更不要说去英国了（虽然我感觉用vpn可以行得通，要是...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/12/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = CTF>CTF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/12/06</span>
-                </div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/11/25/tags- 日记11.25/" >
+            
+                <span>这是一篇关于维权的思考</span>
+        </a>
+        <div class="abstract-content">
+            一篇关于维权的思考&emsp;&emsp;记录一件最近几天一直思考的一件事情吧。&emsp;&emsp;周四晚上去某餐厅吃饭，在吃菜的时候无意瞥见了类似虫子的物体，仔细观察觉得越来越像虫子（参考那种很小的只会蠕动的白色的幼虫或者是蛆虫，就不上图了）。首先我打开了录像先是把虫子录了下来然后录一遍四周证明是这一家餐厅，然后叫过服务员来，服务员还没看完就说这不是虫子，然后我面带微笑说：呵呵，那你说这是什么？然后服务员就去叫她的上层，好像是经理助理，当然也是不承认，然后慢慢的换一盘菜，又换一个锅到了打折最后免单，当然是我又是举出从某乎网站学到的食品安全法第三十九条第一百四十八条和录像证据等等才使...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/11/25</span>
             </div>
-        </article>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/25/tags- 日记11.25/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>这是一篇关于维权的思考</span>
-                    </h2>
-                <div class="abstract-content">
-                    一篇关于维权的思考&emsp;&emsp;记录一件最近几天一直思考的一件事情吧。&emsp;&emsp;周四晚上去某餐厅吃饭，在吃菜的时候无意瞥见了类似虫子的物体，仔细观察觉得越来越像虫子（参考那种很小的只会蠕动的白色的幼虫或者是蛆虫，就不上图了）。首先我打开了录像先是把虫子录了下来然后录一遍四周证明是这一家餐厅，然后叫过服务员来，服务员还没看完就说这不是虫子，然后我面带微笑说：呵呵，那你说这是什么？然后服务员就去叫她的上层，好像是经理助理，当然也是不承认，然后慢慢的换一盘菜，又换一个锅到了打折最后免单，当然是我又是举出从某乎网站学到的食品安全法第三十九条第一百四十八条和录像证据等等才使...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "日记">日记</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/25</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/28/tags- c-c++/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>c语言地址和指针的一些小知识</span>
-                    </h2>
-                <div class="abstract-content">
-                    c语言地址和指针的一些小知识子程序中&amp;和*的使用&emsp;&emsp;最近在做数据结构作业时，有了一个疑惑。在子程序中想要用实参的话，括号里的参数前要用&amp;（并不是取地址符号，后面会提到），例如12345status Delete (Linklist &amp;L)&#123;    ...    ...&#125;
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/10/28/tags- c-c++/" >
+            
+                <span>c语言地址和指针的一些小知识</span>
+        </a>
+        <div class="abstract-content">
+            c语言地址和指针的一些小知识子程序中&amp;和*的使用&emsp;&emsp;最近在做数据结构作业时，有了一个疑惑。在子程序中想要用实参的话，括号里的参数前要用&amp;（并不是取地址符号，后面会提到），例如12345status Delete (Linklist &amp;L)&#123;    ...    ...&#125;
 这样就可以在子函数Delete中进行修改L的操作了。但如果是对内存进行修改，那为什么不能用指针呢？？于是写了一个小程序试验一下1234567891011121314#include&lt;stdio.h&gt;void test(int *p)&#123;	...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/10/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = c/c++>c/c++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "c/c++">c/c++</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/28</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/24/10.24杂想/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>10.24杂想</span>
-                    </h2>
-                <div class="abstract-content">
-                    10.24杂想&emsp;&emsp;今晚本想写一些东西的，但是想到的很混乱，还是整理一下思绪在写吧。
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/10/24/10.24杂想/" >
+            
+                <span>10.24杂想</span>
+        </a>
+        <div class="abstract-content">
+            10.24杂想&emsp;&emsp;今晚本想写一些东西的，但是想到的很混乱，还是整理一下思绪在写吧。
 最近对一句诗特有感触：
 朱门酒肉臭，路有冻死骨。
 
 此刻已经是新的一天了，大家晚安。
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/10/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "日记">日记</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/24</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/23/正式的第一篇文章/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>正式的第一篇文章</span>
-                    </h2>
-                <div class="abstract-content">
-                    正式的第一篇文章
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/10/23/正式的第一篇文章/" >
+            
+                <span>正式的第一篇文章</span>
+        </a>
+        <div class="abstract-content">
+            正式的第一篇文章
 
 &emsp;&emsp;哈喽大家好呀！经过我这只菜鸟的慢慢努力，我的博客终于可以运行起来啦，这个博客是用hexo搭建在github上的，首先要谢谢rookiehacker学长还有现在这个主题的作者fi3ework还有还有其他的分享自己经验的人们，对了他们两个的连接我已经挂在friends上啦！那么来介绍一下我自己吧：信息安全专业小白一枚，建立博客的初衷是为了督促自己学习，而现在我已经打算在学习的同时还要写一些日记、分享一些图片或者影评啥的，嗯我希望在这个复杂庞大的互联网世界里拥有自己的一块小空间，对了我是许巍和孙燕姿粉丝。
 
 &emsp;&emsp;过几天我会整理一下...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/10/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = 日记>日记</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "日记">日记</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/23</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/23/第一篇文章/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>第一篇文章</span>
-                    </h2>
-                <div class="abstract-content">
-                    第一篇文章来啦
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/10/23/第一篇文章/" >
+            
+                <span>第一篇文章</span>
+        </a>
+        <div class="abstract-content">
+            第一篇文章来啦
 test1
 test2
 test3photo test
@@ -427,54 +623,54 @@ test3photo test
 
 
 123printf(&quot;hello,world&quot;);test;return;
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/10/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = hexo>hexo</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
     
 </div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/23</span>
-                </div>
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/09/20/hello-world/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>Hello World</span>
-                    </h2>
-                <div class="abstract-content">
-                    Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/09/20/hello-world/" >
+            
+                <span>Hello World</span>
+        </a>
+        <div class="abstract-content">
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
 Quick StartCreate a new post1$ hexo new "My New Post"
 More info: Writing
 Run server1$ hexo server
 More...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/09/20</span>
-                </div>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/09/20</span>
             </div>
-        </article>
+            <!-- tags  -->
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/">#PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
     </nav>
     
 </main>
@@ -494,63 +690,41 @@ More...
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer github" target="_blank" title="github"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer zhihu" target="_blank" title="zhihu"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer facebook" target="_blank" title="facebook"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer twitter" target="_blank" title="twitter"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer instagram" target="_blank" title="instagram"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer stack-overflow" target="_blank" title="stack-overflow"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer linkedin" target="_blank" title="linkedin"></a>
-            
+    
         
     
         
-            
-                <a href="//www.baidu.com" class="iconfont-archer others" target="_blank" title="others"></a>
-            
-        
     
         
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
-            
+    
         
     
 
@@ -558,29 +732,30 @@ More...
     
     <!-- powered by Hexo  -->
     <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
     </div>
     <!-- 不蒜子  -->
     
     <div class="busuanzi-container">
-        <span id="busuanzi_container_site_pv">Welcome, No. <span id="busuanzi_value_site_pv"></span> visitor.
-        </span>
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
     </div>
     
 </footer>
     </div>
     <!-- toc -->
     
-    <div class="back-top">&#xe639;</div>
-    <div class="sidebar">
-    <div class="sidebar-header sidebar-header-show-archive">
-        <div class="sidebar-category">
-            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
-            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
-        </div>
-    </div>
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
     <div class="sidebar-content sidebar-content-show-archive">
-          <div class="sidebar-archive">
+          <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
     
     
@@ -834,21 +1009,13 @@ More...
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-archive"> Total : 20 </div>
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 20
+        </div>
+        <!-- search  -->
+        
+    </div>
     
     <div class="post-archive">
     
@@ -860,12 +1027,12 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
@@ -969,22 +1136,23 @@ More...
     
     </div>
   </div>
-        <div class="sidebar-tags">
+        <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name"><a href= "#">CTF</a></span>
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
-        <span class="sidebar-tag-name"><a href= "#">日记</a></span>
+        <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
     
-        <span class="sidebar-tag-name"><a href= "#">c/c++</a></span>
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
-        <span class="sidebar-tag-name"><a href= "#">hexo</a></span>
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+        <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
     
-        <span class="sidebar-tag-name"><a href= "#">密码学</a></span>
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
     
     </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
     缺失模块。<br/>
     1、请确保node版本大于6.2<br/>
@@ -1008,28 +1176,50 @@ jsonContent:
     link: false
     permalink: false
     excerpt: false
-    categories: false
+    categories: true
     tags: true</pre>
     </div> 
-    <div class="sidebar-tag-list"></div>
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
 </div>
     </div>
 </div> 
     <script>
-    var jsInfo = {
-        root: '/'
+    var siteMeta = {
+        root: "/",
+        author: "n3wb1e"
     }
 </script>
-    <!-- 不蒜子  -->
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
     
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
-    <!-- CNZZ统计  -->
+    <!-- CNZZ  -->
     
     <div style="display: none">
         <script src="https://s13.cnzz.com/z_stat.php?id=1271279280&web_id=1271279280" language="JavaScript"></script>
         
     </div>
+    <!-- async load share.js -->
+     
     </body>
 </html>
 
