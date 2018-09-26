@@ -359,6 +359,39 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/09/26/xor/" >
+            
+                <span>18年省赛初赛图片encode题</span>
+        </a>
+        <div class="abstract-content">
+            misc题目图片encode
+在做题的时候看到这个题也是没有几个人做出来，后来看了wp才学会了，然后自己又做了一遍，没想到还是遇到了很多坑，还是太菜了 XD
+首先下载文件，文件名为encode.png，打开发现图片打不开，用winhex查看16进制
+看到这个也是一头雾水，没有见过也没有任何思路，后来看了官方wp才知道要与正常的png文件进行异或，然后发现前八位异或出来的结果正好为对应的“kelaibei”，由此可以联想这是解码的key
+用key来对图片进行解码，编写一个简单的python脚本，注意，在进行异或的时候要用只读二进制即rb打开文件，用ord来进行异或最后转为hex，因为本人不...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "ctf">ctf</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/09/12/pread/" >
             
                 <span>c++编写linux生产者消费者问题</span>
@@ -653,42 +686,10 @@ rsa算法的原理
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/03/20/py-3.20/" >
-            
-                <span>python初学之正则表达式</span>
-        </a>
-        <div class="abstract-content">
-            python初学之正则表达式&emsp;&emsp;今天晚上学习python，刷到了一个汇率转换的题目，需要提取字符串中的数字，在这里总结一下。
-
-方法一&emsp;&emsp;re.sub(pattern, repl, string, count=0, flags=0)&emsp;&emsp;在字符串 string 中找到匹配正则表达式 pattern 的所有子串，用另一个字符串 repl 进行替换。如果没有找到匹配 pattern 的串，则返回未被修改的 string。Repl 既可以是字符串也可以是一个函数。但是这种方法有个缺点，那就是当数字带有小数时，小数点会被删掉 = = 。
-...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "python">python</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1139,9 +1140,32 @@ rsa算法的原理
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 20
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -1157,12 +1181,17 @@ rsa算法的原理
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/26</span><a class="archive-post-title" href= "/2018/09/26/xor/" >18年省赛初赛图片encode题</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
@@ -1275,11 +1304,13 @@ rsa算法的原理
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
-        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
-    
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
         <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
+    
+        <span class="sidebar-tag-name" data-tags="ctf"><span class="iconfont-archer">&#xe606;</span>ctf</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
