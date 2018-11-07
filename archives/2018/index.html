@@ -346,6 +346,69 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/11/07/01beigao/" >
+            
+                <span>01背包算法</span>
+        </a>
+        <div class="abstract-content">
+            01背包算法不会啊！！！！！！！！！！！
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "c/c++">c/c++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/10/23/ez_pwn/" >
+            
+                <span>护网杯预赛入门pwn题</span>
+        </a>
+        <div class="abstract-content">
+            ez_pwn
+
+首先下载文件，文件名为encode.png，打开发现图片打不开，用winhex查看16进制
+看到这个也是一头雾水，没有见过也没有任何思路，后来看了官方wp才知道要与正常的png文件进行异或，然后发现前八位异或出来的结果正好为对应的“kelaibei”，由此可以联想这是解码的key
+用key来对图片进行解码，编写一个简单的python脚本，注意，在进行异或的时候要用只读二进制即rb打开文件，用ord来进行异或最后转为hex，因为本人不知道如何将16进制写进文件，所以打印出来手动写入，希望大家指教代码如下：
+1234567891011121314s = &apos;&apos...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "ctf">ctf</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/09/26/xor/" >
             
                 <span>18年省赛初赛图片encode题</span>
@@ -589,78 +652,6 @@ rsa算法的原理
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/02/tianxiawugong/" >
-            
-                <span>实验吧ctf天下武功唯快不破</span>
-        </a>
-        <div class="abstract-content">
-            天下武功唯快不破&emsp;&emsp;解题方法如题，怎么做到快呢？写代码啊！
-天下武功唯快不破 分值：10来源： 北邮天枢战队看看响应头
-格式：CTF{ }
-解题链接： http://ctf5.shiyanbar.com/web/10/10.php
-
-通过base64解码响应头中的flag然后快速提交得到flag，代码如下。12345678910import base64import requests as rurl = &apos;http://ctf5.shiyanbar.com/web/10/10.php&apos;header = r.get(url)flag = base64...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/01/kali change passwd/" >
-            
-                <span>kali忘记密码后更改密码</span>
-        </a>
-        <div class="abstract-content">
-            kali忘记密码后更改密码&emsp;&emsp;愚人节快乐！刚刚用密码怎么也上不去root账户了，所以刚刚学会这个方法，感觉挺简单的。
-
-&emsp;&emsp;启动系统出现引导界面时选择回复模式。
-&emsp;&emsp;按e进入编辑模式。
-&emsp;&emsp;找到一行代码，以linux开头，结尾为initrd.gz结尾的代码，如1linux       /boot/vmlinuz-*.*.*-kali- ············  /gtk/initrd\.gz
-
-
-代码一般在最下面，注意不要找错，试了三遍才发现找错了代码。= =
-
-&emsp;&emsp;将代码中的ro改为r...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
             </div>
             <!-- tags  -->
             
@@ -1042,9 +1033,47 @@ rsa算法的原理
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -1060,17 +1089,27 @@ rsa算法的原理
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href= "/2018/11/07/01beigao/" >01背包算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2018/10/23/ez_pwn/" >护网杯预赛入门pwn题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/26</span><a class="archive-post-title" href= "/2018/09/26/xor/" >18年省赛初赛图片encode题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
@@ -1177,19 +1216,19 @@ rsa算法的原理
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
+    
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
         <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
+    
+        <span class="sidebar-tag-name" data-tags="ctf"><span class="iconfont-archer">&#xe606;</span>ctf</span>
     
         <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
-    
         <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
-    
-        <span class="sidebar-tag-name" data-tags="ctf"><span class="iconfont-archer">&#xe606;</span>ctf</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
