@@ -346,6 +346,37 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/06/12.6/" >
+            
+                <span>python2报错No module named packaging.version</span>
+        </a>
+        <div class="abstract-content">
+            python2报错ImportError: No module named packaging.version一开始直接pip安装packaging库，发现库已经安装。然后搜了一下，发现大部分是pip出错，因为py2和py3同时安装在了电脑上，先把pip默认改为了pip212345which pipwhich pythonvim pip文件用python2的路径把原来的路径覆盖pip --version
+之后还是报错，重装setuptools和pwntools没用，最后pip list发现列表中并没有packaging然后卸载重装，问题解决。
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/11/13/shengsaipy/" >
             
                 <span>18年山东省省赛两道py编码题</span>
@@ -382,7 +413,12 @@
                 <span>01背包算法</span>
         </a>
         <div class="abstract-content">
-            01背包算法不会啊！！！！！！！！！！！
+            01背包算法
+之前不会现在补上
+动态规划，直接上核心代码12345678910for(int i=1;i&lt;=n;i++)//v为价值，w为占用空间    &#123;        for(int j=1;j&lt;=c;j++)        &#123;            if(j&gt;=w[i])                m[i][j]=max(m[i-1][j],m[i-1][j-w[i]]+v[i]);            else                m[i][j]=m[i-1][j];        &#125;    &#125;
+
+
+
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -619,36 +655,6 @@ rsa算法的原理
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/04/06/hash/" >
-            
-                <span>0e开头的md5</span>
-        </a>
-        <div class="abstract-content">
-            总结&emsp;&emsp;百度找到的。。。侵删。。。
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172s878926199a0e545993274517709034328855841020s155964671a0e342768416822451524974117254469s214587387a0e848240448830537924465865611904s2145...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/06</span>
             </div>
             <!-- tags  -->
             
@@ -1052,9 +1058,34 @@ rsa算法的原理
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 23
+        Total : 24
         </div>
         <!-- search  -->
         
@@ -1067,6 +1098,11 @@ rsa算法的原理
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2018/12/06/12.6/" >python2报错No module named packaging.version</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1085,12 +1121,12 @@ rsa算法的原理
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
@@ -1199,15 +1235,15 @@ rsa算法的原理
     
         <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
     
-        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
-    
         <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="ctf"><span class="iconfont-archer">&#xe606;</span>ctf</span>
     

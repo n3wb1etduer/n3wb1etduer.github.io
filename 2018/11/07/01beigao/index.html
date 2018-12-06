@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">8</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">83</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,7 +401,12 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="01背包算法"><a href="#01背包算法" class="headerlink" title="01背包算法"></a>01背包算法</h1><h2 id="不会啊！！！！！！！！！！！"><a href="#不会啊！！！！！！！！！！！" class="headerlink" title="不会啊！！！！！！！！！！！"></a>不会啊！！！！！！！！！！！</h2>
+        <h1 id="01背包算法"><a href="#01背包算法" class="headerlink" title="01背包算法"></a>01背包算法</h1><ul>
+<li>之前不会现在补上</li>
+<li>动态规划，直接上核心代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for(int i=1;i&lt;=n;i++)//v为价值，w为占用空间</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1;j&lt;=c;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(j&gt;=w[i])</span><br><span class="line">                m[i][j]=max(m[i-1][j],m[i-1][j-w[i]]+v[i]);</span><br><span class="line">            else</span><br><span class="line">                m[i][j]=m[i-1][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
     </article>
     <!-- license  -->
     
@@ -409,7 +414,7 @@ height:50vh;
             <p>原文作者：<a href="http://n3wb1e.com">n3wb1e</a>
             <p>原文链接：<a href="http://n3wb1e.com/2018/11/07/01beigao/">http://n3wb1e.com/2018/11/07/01beigao/</a>
             <p>发表日期：<a href="http://n3wb1e.com/2018/11/07/01beigao/">November 7th 2018, 10:52:33 am</a>
-            <p>更新日期：<a href="http://n3wb1e.com/2018/11/07/01beigao/">November 7th 2018, 10:53:07 am</a>
+            <p>更新日期：<a href="http://n3wb1e.com/2018/11/07/01beigao/">December 6th 2018, 8:48:43 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -550,7 +555,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01背包算法"><span class="toc-number">1.</span> <span class="toc-text">01背包算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不会啊！！！！！！！！！！！"><span class="toc-number">1.1.</span> <span class="toc-text">不会啊！！！！！！！！！！！</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01背包算法"><span class="toc-number">1.</span> <span class="toc-text">01背包算法</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -864,9 +869,34 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 23
+        Total : 24
         </div>
         <!-- search  -->
         
@@ -879,6 +909,11 @@ top:50vh;
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2018/12/06/12.6/" >python2报错No module named packaging.version</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -897,12 +932,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
@@ -1011,15 +1046,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
     
-        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
-    
         <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
     
         <span class="sidebar-tag-name" data-tags="ctf"><span class="iconfont-archer">&#xe606;</span>ctf</span>
     
