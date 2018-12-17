@@ -346,22 +346,29 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/16/rsazhengming/" >
+        <a class="abstract-title" href = "/2018/12/17/crt/" >
             
-                <span>rsa解密证明</span>
+                <span>CRT在RSA解密中的应用</span>
         </a>
         <div class="abstract-content">
-            rsa入门节约时间直接上手稿了
-p.s. 因为云服务器出了一点问题，以前文章的图片都丢失了，表示尽量恢复…参考链接：
+            CRT在RSA解密中的应用
+关于rsarsa的加密解密已经在上一片文章中提到了，这篇文章来实现rsa并用crt对解密进行优化
 
-https://blog.csdn.net/u014044812/article/details/80866759
+rsa的实现实验环境在ubuntu下，需要安装openssl12$ sudo apt-get update$ sudo apt-get install libssl-dev
 
+可能用到的一些函数
+代码部分见文章的最后，编译命令如下
+1$ gcc bn_sample.c -lcrypto
 
+crt的应用分别计算d1,d2,c1,c2,m1,m2,b1,b2,最后相加mod(n)即可
+
+代码
+1234567891011121314151617181920212223...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/16</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/17</span>
             </div>
             <!-- tags  -->
             
@@ -380,16 +387,17 @@ https://blog.csdn.net/u014044812/article/details/80866759
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/12/16/crt/" >
+        <a class="abstract-title" href = "/2018/12/16/rsazhengming/" >
             
-                <span>中国剩余定理在rsa解密中的应用</span>
+                <span>rsa解密证明</span>
         </a>
         <div class="abstract-content">
-            rsa入门&emsp;&emsp;rsa算法是一种经典的非对称加密算法，我们废话不多说，我直接拿wiki上的解释过来吧，侵权联系本人马上删除
+            rsa入门节约时间直接上手稿了
+p.s. 因为云服务器出了一点问题，以前文章的图片都丢失了，表示尽量恢复…参考链接：
 
-rsa算法的原理
+https://blog.csdn.net/u014044812/article/details/80866759
 
-12345678def ext_euclid(a,b):    if b == 0:        return (a, 1, 0)    d, x, y = ext_euclid(b, a%b)    return (d, y, x-a//b*y)            # 返回三元组if __name__ == &apos;__main__&apos;:    print(ext_euclid(17, 2135733082...
+
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -862,30 +870,6 @@ rsa算法的原理
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 26
@@ -904,12 +888,12 @@ rsa算法的原理
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/2018/12/16/rsazhengming/" >rsa解密证明</a>
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2018/12/17/crt/" >CRT在RSA解密中的应用</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/2018/12/16/crt/" >中国剩余定理在rsa解密中的应用</a>
+            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/2018/12/16/rsazhengming/" >rsa解密证明</a>
         </li>
     
     
@@ -934,12 +918,12 @@ rsa算法的原理
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
