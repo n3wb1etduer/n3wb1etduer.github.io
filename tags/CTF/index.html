@@ -346,25 +346,34 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/11/13/shengsaipy/" >
+        <a class="abstract-title" href = "/2018/12/18/start/" >
             
-                <span>18年山东省省赛两道py编码题</span>
+                <span>pwnable.tw第一题start</span>
         </a>
         <div class="abstract-content">
-            18年省赛py编码题
-不得不说水平还是菜，在比赛中能手撕就不写代码，以后需要强化编码能力。废话不多说直接上题目。题目：进制转换
-题目描述：’d87 x65 x6c x63 o157 d109 o145 b100000 d116 b1101111 o40 x6b b1100101 b1101100 o141 d105 x62 d101 b1101001 d46 o40 d71 x69 d118 x65 x20 b1111001 o157 b1110101 d32 o141 d32 d102 o154 x61 x67 b100000 o141 d115 b100000 b1100001 d3...
+            pwn之startchecksec可以看到并没有什么保护
+拖入ida中,gdb单步调试可以看到代码很短，逻辑也很明显。f5并没有什么结果，直接读汇编
+
+设置断点
+1b *0x08048060
+
+单步执行首先把esp的exit的起始地址压入栈中，然后把eax - edx置零，然后三个push把字符串压入栈中，把esp的地址传到ecx，然后int 80调用4号输出和3号输入，当执行到ret则把当前栈内的地址传给eip跳到其他位置。
+分析程序相当于执行了
+12write(1,&quot;Let&apos;s start the CTF:&quot;,20);read(0,buf,60);
+
+
+...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/13</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "ctf">ctf</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
     
 </div>
             
@@ -377,27 +386,266 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/26/xor/" >
+        <a class="abstract-title" href = "/2018/12/06/12.6/" >
             
-                <span>18年省赛初赛图片encode题</span>
+                <span>python2报错No module named packaging.version</span>
         </a>
         <div class="abstract-content">
-            misc题目图片encode
-在做题的时候看到这个题也是没有几个人做出来，后来看了wp才学会了，然后自己又做了一遍，没想到还是遇到了很多坑，还是太菜了 XD
-首先下载文件，文件名为encode.png，打开发现图片打不开，用winhex查看16进制
-看到这个也是一头雾水，没有见过也没有任何思路，后来看了官方wp才知道要与正常的png文件进行异或，然后发现前八位异或出来的结果正好为对应的“kelaibei”，由此可以联想这是解码的key
-用key来对图片进行解码，编写一个简单的python脚本，注意，在进行异或的时候要用只读二进制即rb打开文件，用ord来进行异或最后转为hex，因为本人不...
+            python2报错ImportError: No module named packaging.version一开始直接pip安装packaging库，发现库已经安装。然后搜了一下，发现大部分是pip出错，因为py2和py3同时安装在了电脑上，先把pip默认改为了pip212345which pipwhich pythonvim pip文件用python2的路径把原来的路径覆盖pip --version
+之后还是报错，重装setuptools和pwntools没用，最后pip list发现列表中并没有packaging然后卸载重装，问题解决。
+
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/26</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/06</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "ctf">ctf</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/05/11/iptables/" >
+            
+                <span>云服务器的防火墙配置</span>
+        </a>
+        <div class="abstract-content">
+            一些关于iptables的东西&emsp;&emsp;前几天在服务器装gitlab结果把防火墙弄乱了，Xshell和ss都连不上了，瞎捣鼓了几天也没弄好，最后直接搬新机房重装系统了，下面记录一下学到的东西吧。
+
+首先是一些基本的命令
+1234567$ /etc/init.d/iptables start     # 开启防火墙，或者service iptables start，以下同理$ /etc/init.d/iptables stop      # 停止防火墙$ /etc/init.d/iptables restart   # 重启防火墙$ /etc/init.d/iptables ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/11</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/04/06/hash/" >
+            
+                <span>0e开头的md5</span>
+        </a>
+        <div class="abstract-content">
+            总结&emsp;&emsp;百度找到的。。。侵删。。。
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172s878926199a0e545993274517709034328855841020s155964671a0e342768416822451524974117254469s214587387a0e848240448830537924465865611904s2145...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/04/02/tianxiawugong/" >
+            
+                <span>实验吧ctf天下武功唯快不破</span>
+        </a>
+        <div class="abstract-content">
+            天下武功唯快不破&emsp;&emsp;解题方法如题，怎么做到快呢？写代码啊！
+天下武功唯快不破 分值：10来源： 北邮天枢战队看看响应头
+格式：CTF{ }
+解题链接： http://ctf5.shiyanbar.com/web/10/10.php
+
+通过base64解码响应头中的flag然后快速提交得到flag，代码如下。12345678910import base64import requests as rurl = &apos;http://ctf5.shiyanbar.com/web/10/10.php&apos;header = r.get(url)flag = base64...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/04/01/kali change passwd/" >
+            
+                <span>kali忘记密码后更改密码</span>
+        </a>
+        <div class="abstract-content">
+            kali忘记密码后更改密码&emsp;&emsp;愚人节快乐！刚刚用密码怎么也上不去root账户了，所以刚刚学会这个方法，感觉挺简单的。
+
+&emsp;&emsp;启动系统出现引导界面时选择回复模式。
+&emsp;&emsp;按e进入编辑模式。
+&emsp;&emsp;找到一行代码，以linux开头，结尾为initrd.gz结尾的代码，如1linux       /boot/vmlinuz-*.*.*-kali- ············  /gtk/initrd\.gz
+
+
+代码一般在最下面，注意不要找错，试了三遍才发现找错了代码。= =
+
+&emsp;&emsp;将代码中的ro改为r...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/03/01/03.01/" >
+            
+                <span>一道隐写术的题目</span>
+        </a>
+        <div class="abstract-content">
+            一道隐写术的题目&emsp;&emsp;哈哈哈隐写术挺好玩的，但是有时还是做起来没有方向，还是太菜了啊！！
+题目：欢迎来到地狱原题链接: http://www.shiyanbar.com/ctf/2010连环套哦。格式CTF{xxxx}。解题链接： http://ctf5.shiyanbar.com/stega/hell/欢迎来到地狱.zip
+
+解压压缩包，发现有一个图片和一个文档，打开文档发现有密码，那就打开图片看看有什么线索，结果图片打不开。
+
+用winhex打开图片，发现文件头有点问题，把jpg文件的文件头补全，jpg文件的前8字节的十六进制是FF&emsp;D8&emsp;FF&...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/01</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/02/23/02.23/" >
+            
+                <span>CTF之salmap初使用</span>
+        </a>
+        <div class="abstract-content">
+            CTF之sqlmap初使用&emsp;&emsp;最近淘了一台IBM T43，价格很美丽，就弄回来装kali玩啦，但是不知道为什么USB插U盘可以正常使用，但是鼠标却用不了。实用了一下kali里面的sqlmap，我的win10装的sqlmap本来用的正常的，后来出了毛病，输入指令回车后啥都没有。。有人解答一下吗？
+题目：这个看起来有点简单原题链接: 这个看起来有点简单很明显。过年过节不送礼，送礼就送这个格式：解题链接： http://ctf5.shiyanbar.com/8/index.php?id=1 
+
+查看数据库名
+
+查看表名
+
+查看列名
+
+把数据dump出来得到flag
+
+
+&e...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/02/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/12/06/tags- CTF/" >
+            
+                <span>CTF之burp初使用</span>
+        </a>
+        <div class="abstract-content">
+            CTF之burp初使用&emsp;&emsp;最近粗略的试用了一下burp，不得不说这是一个好的工具，虽然我只用到了全部功能中的一点点。。。（逃，下面我就简单地记录一下实验吧中的两道web题吧。
+题目：头有点大原题链接: 头有点大提示都这么多了，再提示就没意思了。解题链接： http://ctf5.shiyanbar.com/sHeader/ 
+
+首先打开链接，得到内容如下图得到信息访问网站需要安装.net framework 9.9 并且要在英国用ie浏览器访问，啥？要知道 .net framework 现在最高版本好像才是4.7哦，更不要说去英国了（虽然我感觉用vpn可以行得通，要是...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/12/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
     
 </div>
             
@@ -827,20 +1075,9 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 27
         </div>
         <!-- search  -->
         
@@ -853,6 +1090,11 @@
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/18</span><a class="archive-post-title" href= "/2018/12/18/start/" >pwnable.tw第一题start</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -886,12 +1128,12 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
@@ -998,218 +1240,9 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
-    
         <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
     
-        <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
-    
-        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
-    
-        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
-    
-        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
-    
-        <span class="sidebar-tag-name" data-tags="ctf"><span class="iconfont-archer">&#xe606;</span>ctf</span>
-    
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br/>
-    1、请确保node版本大于6.2<br/>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
-    3、在根目录_config.yml里添加配置：
-    <pre style="color: #787878; font-size: 0.6rem;">
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true</pre>
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-    </div>
-</div> 
-    <script>
-    var siteMeta = {
-        root: "/",
-        author: "n3wb1e"
-    }
-</script>
-    <!-- CDN failover -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ === 'undefined')
-        {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
-        }
-    </script>
-    <script src="/scripts/main.js"></script>
-    <!-- algolia -->
-    
-    <!-- busuanzi  -->
-    
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    <!-- CNZZ  -->
-    
-    <div style="display: none">
-        <script src="https://s13.cnzz.com/z_stat.php?id=1271279280&web_id=1271279280" language="JavaScript"></script>
-        
-    </div>
-    <!-- async load share.js -->
-     
-    </body>
-</html>
-
-
-f= "/2018/11/07/01beigao/" >01背包算法</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/26</span><a class="archive-post-title" href= "/2018/09/26/xor/" >18年省赛初赛图片encode题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/09</span><a class="archive-post-title" href= "/2018/09/09/rsa/" >rsa入门</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/29</span><a class="archive-post-title" href= "/2018/07/29/newcomputer/" >hexo博客换电脑后的配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/20</span><a class="archive-post-title" href= "/2018/07/20/mac/" >Hello World</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/11</span><a class="archive-post-title" href= "/2018/05/11/iptables/" >云服务器的防火墙配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/06</span><a class="archive-post-title" href= "/2018/04/06/hash/" >0e开头的md5</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2018/04/02/tianxiawugong/" >实验吧ctf天下武功唯快不破</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/01</span><a class="archive-post-title" href= "/2018/04/01/kali change passwd/" >kali忘记密码后更改密码</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/2018/03/20/py-3.20/" >python初学之正则表达式</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/01</span><a class="archive-post-title" href= "/2018/03/01/03.01/" >一道隐写术的题目</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/23</span><a class="archive-post-title" href= "/2018/02/23/02.23/" >CTF之salmap初使用</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/2018/01/26/1.26/" >很久没更新</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2017 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/06</span><a class="archive-post-title" href= "/2017/12/06/tags- CTF/" >CTF之burp初使用</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/25</span><a class="archive-post-title" href= "/2017/11/25/tags- 日记11.25/" >这是一篇关于维权的思考</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2017/10/28/tags- c-c++/" >c语言地址和指针的一些小知识</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/24</span><a class="archive-post-title" href= "/2017/10/24/10.24杂想/" >10.24杂想</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2017/10/23/正式的第一篇文章/" >正式的第一篇文章</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/23</span><a class="archive-post-title" href= "/2017/10/23/第一篇文章/" >第一篇文章</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">09/20</span><a class="archive-post-title" href= "/2017/09/20/hello-world/" >Hello World</a>
-        </li>
-    
-    </div>
-  </div>
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-    
         <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
-    
-        <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
     
         <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
     

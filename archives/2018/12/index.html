@@ -346,6 +346,46 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/12/18/start/" >
+            
+                <span>pwnable.tw第一题start</span>
+        </a>
+        <div class="abstract-content">
+            pwn之startchecksec可以看到并没有什么保护
+拖入ida中,gdb单步调试可以看到代码很短，逻辑也很明显。f5并没有什么结果，直接读汇编
+
+设置断点
+1b *0x08048060
+
+单步执行首先把esp的exit的起始地址压入栈中，然后把eax - edx置零，然后三个push把字符串压入栈中，把esp的地址传到ecx，然后int 80调用4号输出和3号输入，当执行到ret则把当前栈内的地址传给eip跳到其他位置。
+分析程序相当于执行了
+12write(1,&quot;Let&apos;s start the CTF:&quot;,20);read(0,buf,60);
+
+
+...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/12/17/crt/" >
             
                 <span>CRT在RSA解密中的应用</span>
@@ -869,20 +909,9 @@ https://blog.csdn.net/u014044812/article/details/80866759
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 27
         </div>
         <!-- search  -->
         
@@ -895,6 +924,11 @@ https://blog.csdn.net/u014044812/article/details/80866759
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/18</span><a class="archive-post-title" href= "/2018/12/18/start/" >pwnable.tw第一题start</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -928,12 +962,12 @@ https://blog.csdn.net/u014044812/article/details/80866759
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
@@ -1040,9 +1074,9 @@ https://blog.csdn.net/u014044812/article/details/80866759
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
-    
         <span class="sidebar-tag-name" data-tags="c/c++"><span class="iconfont-archer">&#xe606;</span>c/c++</span>
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
     
         <span class="sidebar-tag-name" data-tags="日记"><span class="iconfont-archer">&#xe606;</span>日记</span>
     
