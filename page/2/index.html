@@ -359,6 +359,38 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/09/12/pread/" >
+            
+                <span>c++编写linux生产者消费者问题</span>
+        </a>
+        <div class="abstract-content">
+            设计任务: 利用信号量解决生产者-消费者问题
+解决方案生产者-消费者问题是典型的进程同步问题，其本质是如何控制并发进程对有界共享区的访问.生产者进程生产产品，然后将产品放置在一个空缓冲区中供消费者进程消费.消费者进程从缓冲区中获得产品，然后释放缓冲区.当生产者进程生产产品时，如果没有空缓冲区可用，那么生产者进程必须阻塞，等待消费者进程释放出一个空缓冲区.当消费者进程消费产品时，如果没有满的缓冲区，那么消费者进程将被阻塞，直到新的产品被生产出来.
+数据结构:如下：
+1234567char buff[SIZE]; //缓冲区char *pc = buff; //生产者消费者共同使用一个指针对...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "c/c++">c/c++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/09/12/pip/" >
             
                 <span>pip安装whl包遇到的小问题</span>
@@ -647,40 +679,6 @@ rsa算法的原理
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "python">python</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/03/01/03.01/" >
-            
-                <span>一道隐写术的题目</span>
-        </a>
-        <div class="abstract-content">
-            一道隐写术的题目&emsp;&emsp;哈哈哈隐写术挺好玩的，但是有时还是做起来没有方向，还是太菜了啊！！
-题目：欢迎来到地狱原题链接: http://www.shiyanbar.com/ctf/2010连环套哦。格式CTF{xxxx}。解题链接： http://ctf5.shiyanbar.com/stega/hell/欢迎来到地狱.zip
-
-解压压缩包，发现有一个图片和一个文档，打开文档发现有密码，那就打开图片看看有什么线索，结果图片打不开。
-
-用winhex打开图片，发现文件头有点问题，把jpg文件的文件头补全，jpg文件的前8字节的十六进制是FF&emsp;D8&emsp;FF&...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CTF">CTF</a>
     
 </div>
             
@@ -1246,9 +1244,60 @@ rsa算法的原理
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 29
+        Total : 30
         </div>
         <!-- search  -->
         
@@ -1261,6 +1310,11 @@ rsa算法的原理
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/18</span><a class="archive-post-title" href= "/2019/05/18/suiyuan/" >记录一次手工sql注入</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1318,12 +1372,12 @@ rsa算法的原理
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pread/" >c++编写linux生产者消费者问题</a>
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2018/09/12/pip/" >pip安装whl包遇到的小问题</a>
         </li>
     
     
